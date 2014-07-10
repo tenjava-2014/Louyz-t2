@@ -1,0 +1,3 @@
+name: Louyz-t2
+main: com.tenjava.entries.Louyz.t2.TenJava
+version: '${project.version}'
