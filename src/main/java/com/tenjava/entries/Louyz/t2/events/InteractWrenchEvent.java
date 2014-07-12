@@ -14,7 +14,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class InteractEvent implements Listener{
+public class InteractWrenchEvent implements Listener{
     @EventHandler
     public void onInteractEvent(PlayerInteractEvent event) {
         Player p = event.getPlayer();

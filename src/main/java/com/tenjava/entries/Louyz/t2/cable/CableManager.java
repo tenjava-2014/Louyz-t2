@@ -1,7 +1,6 @@
 package com.tenjava.entries.Louyz.t2.cable;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -15,33 +14,14 @@ public class CableManager {
     private static List<Cable> cables = new ArrayList<Cable>();
 
     public static void registerCable(Cable cable){
-        // Add to List
         cables.add(cable);
-
-        // Coods of Cable
-        double x = cable.getCableLocation().getX();
-        double y = cable.getCableLocation().getY();
-        double z = cable.getCableLocation().getZ();
-        String coords = x + ", " + y + ", " + z;
-
-        // Print on Console
-        System.out.println("Energy > Cable on " + coords + " has been registered!");
+        System.out.println("Energy > Cable has been registered!");
     }
 
     public static void removeCable(Location location) {
-        Cable cable = new Cable(10, location);
-
-        // Remove to List
+        Cable cable = new Cable(0, location);
         cables.remove(cable);
-
-        // Coods of Cable
-        double x = cable.getCableLocation().getX();
-        double y = cable.getCableLocation().getY();
-        double z = cable.getCableLocation().getZ();
-        String coords = x + ", " + y + ", " + z;
-
-        // Print on Console
-        System.out.println("Energy > Cable on " + coords + " has been removed!");
+        System.out.println("Energy > Cable has been removed!");
     }
 
     public static boolean checkIfCableIsRegistered(Location location) {
@@ -62,8 +42,8 @@ public class CableManager {
 
         ShapedRecipe wRecipe = new ShapedRecipe(wrench);
         wRecipe.shape("@ @",
-                     " # ",
-                     " # ");
+                " # ",
+                " # ");
         wRecipe.setIngredient('@', Material.GOLD_INGOT);
         wRecipe.setIngredient('#', Material.STICK);
         Bukkit.getServer().addRecipe(wRecipe);
@@ -81,5 +61,20 @@ public class CableManager {
         cRecipe.setIngredient('@', Material.THIN_GLASS);
         cRecipe.setIngredient('#', Material.REDSTONE);
         Bukkit.getServer().addRecipe(cRecipe);
+
+        // Recipe: Battery
+        ItemStack battery = new ItemStack(Material.LEVER);
+        ItemMeta batteryMeta = battery.getItemMeta();
+        batteryMeta.setDisplayName("Battery");
+        battery.setItemMeta(batteryMeta);
+
+        ShapedRecipe bRecipe = new ShapedRecipe(battery);
+        bRecipe.shape(" $ ",
+                " # ",
+                " @ ");
+        bRecipe.setIngredient('$', Material.REDSTONE_TORCH_ON);
+        bRecipe.setIngredient('#', Material.REDSTONE_LAMP_OFF);
+        bRecipe.setIngredient('@', Material.DIODE);
+        Bukkit.getServer().addRecipe(bRecipe);
     }
 }
